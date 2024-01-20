@@ -6,12 +6,23 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Pull Docker image
-        run: sudo docker pull poring86/cicd-pipeline:latest
-      - name: Delete old docker container
-        run: sudo docker rm -f poring86/cicd-pipeline-container || true
-      - name: Push Docker Container
-        run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
+      - uses: actions/checkout@v3
+      - name: Login Dockerhub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Build the Docker image
+        run: docker build -t poring86/cicd-pipeline .
+      - name: Push to Dockerhub
+        run: docker push poring86/cicd-pipeline:latest
+        # cs
+      # - name: Pull Docker image
+      #   run: sudo docker pull poring86/cicd-pipeline:latest
+      # - name: Delete old docker container
+      #   run: sudo docker rm -f poring86/cicd-pipeline-container || true
+      # - name: Push Docker Container
+      #   run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
