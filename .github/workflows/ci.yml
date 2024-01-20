@@ -22,7 +22,7 @@ jobs:
         # cd
       - name: Pull Docker image
         run: sudo docker pull poring86/cicd-pipeline:latest
-      - name: Delete old docker container
-        run: sudo docker rm -f cicd-pipeline-container || true
       - name: Push Docker Container
         run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
+      - name: Delete old docker container
+        run: sudo docker rm -f cicd-pipeline-container || true
