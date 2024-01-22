@@ -29,6 +29,7 @@ jobs:
           script: |
             whoami
             ls -al
+            sudo docker pull poring86/cicd-pipeline:latest
         # cs
       # - name: Pull Docker image
       #   run: sudo docker pull poring86/cicd-pipeline:latest
