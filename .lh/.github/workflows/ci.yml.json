@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1705956285666,
@@ -24,6 +24,10 @@
                 {
                     "date": 1705957299247,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,8 +28,9 @@\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n             ls -al\n+            sudo docker pull poring86/cicd-pipeline:latest\n         # cs\n       # - name: Pull Docker image\n       #   run: sudo docker pull poring86/cicd-pipeline:latest\n       # - name: Delete old docker container\n"
+                },
+                {
+                    "date": 1705957457183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n             ls -al\n-            sudo docker pull poring86/cicd-pipeline:latest\n+            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n         # cs\n       # - name: Pull Docker image\n       #   run: sudo docker pull poring86/cicd-pipeline:latest\n       # - name: Delete old docker container\n"
                 }
             ],
             "date": 1705956285666,
