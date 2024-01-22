@@ -19,6 +19,16 @@ jobs:
         run: docker build -t poring86/cicd-pipeline .
       - name: Push to Dockerhub
         run: docker push poring86/cicd-pipeline:latest
+      - name: multiple command
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            whoami
+            ls -al
         # cs
       # - name: Pull Docker image
       #   run: sudo docker pull poring86/cicd-pipeline:latest
