@@ -19,24 +19,33 @@ jobs:
         run: docker build -t poring86/cicd-pipeline .
       - name: Push to Dockerhub
         run: docker push poring86/cicd-pipeline:latest
-      - name: multiple command
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            sudo visudo
-            whoami
-            sudo -S docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-            sudo -S docker pull poring86/cicd-pipeline:latest
-            sudo -S docker rm -f cicd-pipeline-container || true
-            sudo -S docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
-        # cs
+      # - name: multiple command
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     port: ${{ secrets.PORT }}
+      #     script: |
+      #       sudo visudo
+      #       whoami
+      #       sudo -S docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+      #       sudo -S docker pull poring86/cicd-pipeline:latest
+      #       sudo -S docker rm -f cicd-pipeline-container || true
+      #       sudo -S docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
+      # cs
       # - name: Pull Docker image
       #   run: sudo docker pull poring86/cicd-pipeline:latest
       # - name: Delete old docker container
       #   run: sudo docker rm -f poring86/cicd-pipeline-container || true
       # - name: Push Docker Container
       #   run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
+  cd:
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull poring86/cicd-pipeline:latest
+      - name: Delete old docker container
+        run: sudo docker rm -f cicd-pipeline-container || true
+      - name: Push Docker Container
+        run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
