@@ -30,6 +30,7 @@ jobs:
             whoami
             ls -al
             docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+            docker pull poring86/cicd-pipeline:latest
         # cs
       # - name: Pull Docker image
       #   run: sudo docker pull poring86/cicd-pipeline:latest
