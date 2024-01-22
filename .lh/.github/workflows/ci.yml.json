@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1705956285666,
@@ -52,6 +52,14 @@
                 {
                     "date": 1705958160908,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n           password: ${{ secrets.PASSWORD }}\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n-            sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n+            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n             sudo docker pull poring86/cicd-pipeline:latest\n             sudo docker rm -f cicd-pipeline-container || true\n             sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n         # cs\n"
+                },
+                {
+                    "date": 1705958356346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n             docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n-            sudo docker pull poring86/cicd-pipeline:latest\n+            sudo -S docker pull poring86/cicd-pipeline:latest\n             sudo docker rm -f cicd-pipeline-container || true\n             sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n         # cs\n       # - name: Pull Docker image\n"
+                },
+                {
+                    "date": 1705958370087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,12 +27,12 @@\n           password: ${{ secrets.PASSWORD }}\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n-            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n+            sudo -S docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n             sudo -S docker pull poring86/cicd-pipeline:latest\n-            sudo docker rm -f cicd-pipeline-container || true\n-            sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n+            sudo -S docker rm -f cicd-pipeline-container || true\n+            sudo -S docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n         # cs\n       # - name: Pull Docker image\n       #   run: sudo docker pull poring86/cicd-pipeline:latest\n       # - name: Delete old docker container\n"
                 }
             ],
             "date": 1705956285666,
