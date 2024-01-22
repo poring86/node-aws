@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1705956285666,
@@ -48,6 +48,10 @@
                 {
                     "date": 1705958092288,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,10 +27,10 @@\n           password: ${{ secrets.PASSWORD }}\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n-            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n-            docker pull poring86/cicd-pipeline:latest\n+            sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n+            sudo docker pull poring86/cicd-pipeline:latest\n             sudo docker rm -f cicd-pipeline-container || true\n             sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n         # cs\n       # - name: Pull Docker image\n"
+                },
+                {
+                    "date": 1705958160908,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n           password: ${{ secrets.PASSWORD }}\n           port: ${{ secrets.PORT }}\n           script: |\n             whoami\n-            sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n+            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}\n             sudo docker pull poring86/cicd-pipeline:latest\n             sudo docker rm -f cicd-pipeline-container || true\n             sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n         # cs\n"
                 }
             ],
             "date": 1705956285666,
