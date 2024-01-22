@@ -28,8 +28,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             whoami
-            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-            docker pull poring86/cicd-pipeline:latest
+            sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+            sudo docker pull poring86/cicd-pipeline:latest
             sudo docker rm -f cicd-pipeline-container || true
             sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline
         # cs
