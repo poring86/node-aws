@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1705956320286,
@@ -12,6 +12,10 @@
                 {
                     "date": 1705960470246,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,19 @@\n-# name: CD Pipeline\n+name: CD Pipeline\n \n-# on:\n-#   workflow_run:\n-#     workflows: [\"CI Pipeline\"]\n-#     types:\n-#       - completed\n+on:\n+  workflow_run:\n+    workflows: [\"CI Pipeline\"]\n+    types:\n+      - completed\n \n-# jobs:\n-#   build:\n-#     runs-on: self-hosted\n+jobs:\n+  build:\n+    runs-on: self-hosted\n \n-#     steps:\n-#       - name: Pull Docker image\n-#         run: sudo docker pull poring86/cicd-pipeline:latest\n-#       - name: Delete old docker container\n-#         run: sudo docker rm -f cicd-pipeline-container || true\n-#       - name: Push Docker Container\n-#         run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n+    steps:\n+      - name: Pull Docker image\n+        run: sudo docker pull poring86/cicd-pipeline:latest\n+      - name: Delete old docker container\n+        run: sudo docker rm -f cicd-pipeline-container || true\n+      - name: Push Docker Container\n+        run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n"
+                },
+                {
+                    "date": 1705971502046,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,19 @@\n-name: CD Pipeline\n+# name: CD Pipeline\n \n-on:\n-  workflow_run:\n-    workflows: [\"CI Pipeline\"]\n-    types:\n-      - completed\n+# on:\n+#   workflow_run:\n+#     workflows: [\"CI Pipeline\"]\n+#     types:\n+#       - completed\n \n-jobs:\n-  build:\n-    runs-on: self-hosted\n+# jobs:\n+#   build:\n+#     runs-on: self-hosted\n \n-    steps:\n-      - name: Pull Docker image\n-        run: sudo docker pull poring86/cicd-pipeline:latest\n-      - name: Delete old docker container\n-        run: sudo docker rm -f cicd-pipeline-container || true\n-      - name: Push Docker Container\n-        run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n+#     steps:\n+#       - name: Pull Docker image\n+#         run: sudo docker pull poring86/cicd-pipeline:latest\n+#       - name: Delete old docker container\n+#         run: sudo docker rm -f cicd-pipeline-container || true\n+#       - name: Push Docker Container\n+#         run: sudo docker run -d -p 8080 --name cicd-pipeline-container poring86/cicd-pipeline\n"
                 }
             ],
             "date": 1705956320286,
