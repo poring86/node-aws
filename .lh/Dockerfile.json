@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Dockerfile",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1706008131963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1706008131963,
+            "name": "Commit-0",
+            "content": "FROM node:18.18.0-slim\n\nWORKDIR /home/node/app\n\nCOPY package*.json ./\n\nRUN npm install\n\nCOPY . .\n\nEXPOSE 8080\n\nCMD [\"npm\", \"run\", \"start\"]"
+        }
+    ]
+}
